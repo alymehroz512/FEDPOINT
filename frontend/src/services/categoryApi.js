@@ -13,5 +13,11 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-export const getCategories = () => api.get('/api/categories');
-export const createCategory = (data) => api.post('/api/categories', data);
+export const getCategories = async () => {
+  const { data } = await api.get('/api/categories');
+  return data;
+};
+export const createCategory = async (categoryData) => {
+  const { data } = await api.post('/api/categories', categoryData);
+  return data;
+};

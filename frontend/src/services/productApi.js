@@ -25,7 +25,10 @@ export const addProduct = (productData) => {
   return api.post('/api/products', formData);
 };
 
-export const getProducts = (params = {}) => api.get('/api/products', { params });
+export const getProducts = async (params = {}) => {
+  const { data } = await api.get('/api/products', { params });
+  return data;
+};
 export const updateProduct = (id, productData) => {
   const formData = new FormData();
   Object.keys(productData).forEach(key => {

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/common/ProtectedRoute';
@@ -15,22 +15,22 @@ import ResetPassword from './pages/ResetPassword';
 import ErrorBoundary from '../ErrorBoundary';
 
 // Protected Layout (Sidebar + Header)
-const ProtectedLayout = ({ children }) => (
+const ProtectedLayout = () => (
   <div className="d-flex min-vh-100">
     <Sidebar />
     <div className="flex-grow-1">
       <Header />
       <main className="main-content p-4">
-        {children}
+        <Outlet />
       </main>
     </div>
   </div>
 );
 
 // Auth Layout (Centered, No Sidebar)
-const AuthLayout = ({ children }) => (
+const AuthLayout = () => (
   <div className="min-vh-100 d-flex align-items-center justify-content-center">
-    {children}
+    <Outlet />
   </div>
 );
 

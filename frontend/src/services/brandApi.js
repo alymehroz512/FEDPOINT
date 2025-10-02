@@ -13,5 +13,11 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-export const getBrands = () => api.get('/api/brands');
-export const createBrand = (data) => api.post('/api/brands', data);
+export const getBrands = async () => {
+  const { data } = await api.get('/api/brands');
+  return data;
+};
+export const createBrand = async (brandData) => {
+  const { data } = await api.post('/api/brands', brandData);
+  return data;
+};

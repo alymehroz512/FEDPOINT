@@ -13,5 +13,11 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-export const getStats = () => api.get('/api/analytics/stats');
-export const getTrends = (params) => api.get('/api/analytics/trends', { params });
+export const getStats = async () => {
+  const { data } = await api.get('/api/analytics/stats');
+  return data;
+};
+export const getTrends = async (params) => {
+  const { data } = await api.get('/api/analytics/trends', { params });
+  return data;
+};
